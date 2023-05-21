@@ -21,6 +21,8 @@ function init() {
   var cx = 850; // Bat X coordinate
   var cy = 0; // Bat y coordinate
 
+  var bx = 200;
+  var by = 0;
 
 
   var heroStatus = true; // Hero doesn't move
@@ -36,6 +38,13 @@ function init() {
     var heroUp = new Image(); //make image object for pirateUp
     heroUp.src = "./Images/hero-scene1.png"; // set the image file path for pirateUp
     ctx.drawImage(heroUp, hx, hy, 50, 100); // Image Height and Width for pirateUp
+  }
+
+
+  function gasBallon() {
+    var gasBallon = new Image(); //make image object for pirateUp
+    gasBallon.src = "./Images/gas ballon.jpg"; // set the image file path for pirateUp
+    ctx.drawImage(gasBallon, bx, by, 100, 200); // Image Height and Width for pirateUp
   }
 
 
@@ -58,6 +67,9 @@ function init() {
     pirateDead.src = "./Images/dungeon.png"; // set the image file path for pirateUp
     ctx.drawImage(pirateDead, -100, 0, 300, 100); // Image Height and Width for pirateUp
   }
+
+
+
 
 
 
@@ -106,11 +118,6 @@ function init() {
     "keydown",
     function (e) {
       keyPress[e.keyCode] = true; // If press True
-     
-      if (e.keyCode === 32 && heroStatus !== false) {
-        // If the space bar is pressed
-        heroStatus = "fire"; // Set heroStatus to "fire"
-      }
 
 
       console.log(e.keyCode);
@@ -122,11 +129,6 @@ function init() {
     "keyup",
     function (e) {
       delete keyPress[e.keyCode];
-     
-      if (e.keyCode === 32) {
-        // If the space bar is released
-        heroStatus = true; // Set heroStatus back to true
-      }
 
     },
     false
@@ -155,6 +157,21 @@ function init() {
       }
     }
 
+      if (38 in keyPress) {
+        // Up arrorw
+        if (hy - SPEED >= 0) { // Check if moving left won't exceed left boundary
+          hy -= SPEED;
+        }
+      }
+  
+      if (40 in keyPress) {
+        // Down arrow
+        if (hy + SPEED <= cnv.height - 290) { // Check if moving right won't exceed right boundary
+          hy += SPEED;
+        }
+
+    }
+
     if(hx>1090){ // Loads the seen 2 
       window.open("./index3.html", "_self");
     }
@@ -181,7 +198,7 @@ function init() {
 
   function draw() {
     dungeon();
-
+    gasBallon()
     bat();
 
 
