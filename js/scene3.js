@@ -27,11 +27,7 @@ function init() {
 
   var heroStatus = true; // Hero doesn't move
 
-  function bat() {
-    var batFly = new Image(); //make image object for Bat
-    batFly.src = "./Images/bat.png"; // set the image file path for Bat
-    ctx.drawImage(batFly, cx, cy, 200, 100); // Image Height and Width for Bat
-  }
+
 
 
   function heroUp() {
