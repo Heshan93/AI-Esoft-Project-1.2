@@ -56,7 +56,7 @@ function init() {
   function dungeon() {
     var pirateDead = new Image(); //make image object for pirateUp
     pirateDead.src = "./Images/dungeon.png"; // set the image file path for pirateUp
-    ctx.drawImage(pirateDead, 900, 270, 500, 300); // Image Height and Width for pirateUp
+    ctx.drawImage(pirateDead, -100, 0, 300, 100); // Image Height and Width for pirateUp
   }
 
 
