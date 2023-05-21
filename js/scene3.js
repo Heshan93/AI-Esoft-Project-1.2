@@ -62,11 +62,6 @@ function init() {
 
 
 
-  function heroFire() {
-    var heroFire = new Image(); //make image object for pirateUp
-    heroFire.src = "./Images/hero with fire.png"; // set the image file path for pirateUp
-    ctx.drawImage(heroFire, hx, hy, 100, 200); // Image Height and Width for pirateUp
-  }
 
   function heroDead() {
     var heroDead = new Image(); //make image object for pirateUp
@@ -137,22 +132,7 @@ function init() {
         hx += SPEED;
       }
     }
-/*
-      if (38 in keyPress) {
-        // Up arrorw
-        if (hy - SPEED >= 0) { // Check if moving Up won't exceed UP boundary
-          hy -= SPEED;
-        }
-      }
-  
-      if (40 in keyPress) {
-        // Down arrow
-        if (hy + SPEED <= cnv.height - 290) { // Check if moving Down won't exceed Down boundary
-          hy += SPEED;
-        }
 
-    }
-*/
     if(hx>1090){ // Loads the seen 4 
       window.open("./index3.html", "_self");
     }
@@ -165,7 +145,7 @@ function init() {
 
 
 
- /* ===================================================| Hero moving controls |=================================================== */
+ /* ===================================================| Balloon  moving controls |=================================================== */
  
  function BalloonUpDate() {
   if (heroStatus === false) {
@@ -200,7 +180,7 @@ function init() {
 }
 
 
-/* ===================================================| / Hero moving controls |=================================================== */
+/* ===================================================| / Balloon moving controls |=================================================== */
 
 
 
