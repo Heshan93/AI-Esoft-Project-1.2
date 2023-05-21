@@ -11,3 +11,15 @@ body {
   width: 100%;
   height: auto;
 }
+
+#scene2 {
+  /*  width and height to 100% of the viewport */
+width: 100%;
+height: auto;
+}
+
+#scene3 {
+  /*  width and height to 100% of the viewport */
+width: 100%;
+height: auto;
+}

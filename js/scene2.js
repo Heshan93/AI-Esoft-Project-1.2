@@ -4,7 +4,7 @@
   function init()
   {
     
-      var cnv = document.getElementById("scene1"); 
+      var cnv = document.getElementById("scene2"); 
       var ctx = cnv.getContext("2d"); 
       ctx.fillStyle = "white";   // set background to white
       ctx.rect(0,0,1200,749);
@@ -13,7 +13,7 @@
       //////////Loading Image Object & image draw function  for 1st seen//////////////////
 
       var backgroundimage = new Image(); //make image object
-      backgroundimage.src = "./Images/scene1-background.png"; // set the image file path
+      backgroundimage.src = "./Images/Dongen.webp"; // set the image file path
 
     
       // Coordinates and speed of Hero (Player)
