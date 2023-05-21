@@ -39,10 +39,10 @@ function init() {
   }
 
 
-  function hetoFire() {
-    var hetoFire = new Image(); //make image object for pirateUp
-    hetoFire.src = "./Images/hero with fire.png"; // set the image file path for pirateUp
-    ctx.drawImage(hetoFire, hx, hy, 100, 200); // Image Height and Width for pirateUp
+  function heroFire() {
+    var heroFire = new Image(); //make image object for pirateUp
+    heroFire.src = "./Images/hero with fire.png"; // set the image file path for pirateUp
+    ctx.drawImage(heroFire, hx, hy, 100, 200); // Image Height and Width for pirateUp
   }
 
   function heroDead() {
@@ -155,7 +155,9 @@ function init() {
       }
     }
 
-
+    if(hx>1090){ // Loads the seen 2 
+      window.open("./index3.html", "_self");
+    }
     
   }
   /* ===================================================| / Hero moving controls |=================================================== */
@@ -188,7 +190,7 @@ function init() {
     } else if (heroStatus == false) {
       heroDead();
     } else if (heroStatus == "fire") {
-      hetoFire();
+      heroFire();
     }
 
   }
