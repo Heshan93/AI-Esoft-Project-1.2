@@ -40,12 +40,24 @@ function init() {
     ctx.drawImage(heroUp, hx, hy, 50, 100); // Image Height and Width for pirateUp
   }
 
+  
+  function heroOnGasBallon() {
+    var heroOnGasBallon = new Image(); //make image object for pirateUp
+    heroOnGasBallon.src = "./Images/man on the galoon.avif"; // set the image file path for pirateUp
+    ctx.drawImage(heroOnGasBallon, bx, by, 100, 200); // Image Height and Width for pirateUp
+  }
 
   function gasBallon() {
-    var gasBallon = new Image(); //make image object for pirateUp
-    gasBallon.src = "./Images/gas ballon.jpg"; // set the image file path for pirateUp
-    ctx.drawImage(gasBallon, bx, by, 100, 200); // Image Height and Width for pirateUp
+    if (hx === 200) {
+      heroOnGasBallon();
+    } else {
+      var gasBallon = new Image();
+      gasBallon.src = "./Images/gas ballon.jpg";
+      ctx.drawImage(gasBallon, bx, by, 100, 200);
+    }
   }
+
+
 
 
   function heroFire() {
@@ -138,6 +150,12 @@ function init() {
   function upDate() {
     
 
+    if (hx === 200) {
+      heroStatus = false;
+    }
+
+
+
     if (!heroStatus) {
       return; // // Stop moving if the hero is dead 
     }
@@ -204,10 +222,6 @@ function init() {
 
     if (heroStatus == true) {
       heroUp();
-    } else if (heroStatus == false) {
-      heroDead();
-    } else if (heroStatus == "fire") {
-      heroFire();
     }
 
   }
