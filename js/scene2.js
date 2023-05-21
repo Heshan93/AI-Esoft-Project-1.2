@@ -102,7 +102,14 @@ function init() {
     "keydown",
     function (e) {
       keyPress[e.keyCode] = true; // If press True
-     // heroStatus = true; // to change pirate image
+     
+      if (e.keyCode === 32) {
+        // If the space bar is pressed
+        heroStatus = "fire"; // Set heroStatus to "fire"
+      }
+
+
+      console.log(e.keyCode);
     },
     false
   );
@@ -111,7 +118,12 @@ function init() {
     "keyup",
     function (e) {
       delete keyPress[e.keyCode];
-      //heroStatus = false; // to change pirate image
+     
+      if (e.keyCode === 32) {
+        // If the space bar is released
+        heroStatus = false; // Set heroStatus back to false
+      }
+
     },
     false
   );
@@ -130,10 +142,8 @@ function init() {
       hx = hx + SPEED;
     }
 
-    if (32 in keyPress) {
-      // Space bar
-      heroStatus == "fire"
-    }
+
+    
   }
   /* ===================================================| / Hero moving controls |=================================================== */
 
@@ -156,18 +166,15 @@ function init() {
 
     bat();
 
+
     if (heroStatus == true) {
       heroUp();
-    } 
-    if (heroStatus == false)
-     {
-      heroDead()  
+    } else if (heroStatus == false) {
+      heroDead();
+    } else if (heroStatus == "fire") {
+      hetoFire();
     }
 
-    if (heroStatus == "fire")
-    {
-      hetoFire();  
-   }
   }
 
   function Loop() {
