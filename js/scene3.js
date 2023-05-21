@@ -159,20 +159,20 @@ function init() {
 
       if (38 in keyPress) {
         // Up arrorw
-        if (hy - SPEED >= 0) { // Check if moving left won't exceed left boundary
+        if (hy - SPEED >= 0) { // Check if moving Up won't exceed UP boundary
           hy -= SPEED;
         }
       }
   
       if (40 in keyPress) {
         // Down arrow
-        if (hy + SPEED <= cnv.height - 290) { // Check if moving right won't exceed right boundary
+        if (hy + SPEED <= cnv.height - 290) { // Check if moving Down won't exceed Down boundary
           hy += SPEED;
         }
 
     }
 
-    if(hx>1090){ // Loads the seen 2 
+    if(hx>1090){ // Loads the seen 4 
       window.open("./index3.html", "_self");
     }
     
