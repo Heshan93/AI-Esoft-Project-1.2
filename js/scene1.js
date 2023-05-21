@@ -112,16 +112,17 @@
 
 
     /* ===================| Visibility | =================== */
-    function checkVisibility()
-    {
-      if ((hx < 350) || (hx > 530)){
+
+    function checkVisibility() {
+      if ((hx < 350 || hx > 530) && (hx < 950 || hx > 1200)) {
         EnemyCanSee = true;
-      }else{
+      } else {
         EnemyCanSee = false;
         cantSee();
-      } 
+      }
     }
-
+    
+  
 
   /* ===================================================| Handle Keyboard controls |=================================================== */
 
@@ -168,7 +169,7 @@
         //shootHero(); 
       }
       if (count > 80) {  //player was visible for 3 seconds
-        //CyclopCommand();
+       
         shootHero(); 
         heroStatus = false;
       }
