@@ -17,9 +17,7 @@ function init() {
   var hy = 0; // Hero Y coordinate
   var SPEED = 5;
 
-  // Coordinates of Bat (Monster)
-  var cx = 850; // Bat X coordinate
-  var cy = 0; // Bat y coordinate
+
 
   // Coordinates and speed of balloon
   var bx = 200;
