@@ -49,7 +49,7 @@ function init() {
 
   function heroDead() {
     var heroDead = new Image(); //make image object for pirateUp
-    heroDead.src = "./Images/hero-dead-scene1.png"; // set the image file path for pirateUp
+    heroDead.src = "./Images/images.jpeg"; // set the image file path for pirateUp
     ctx.drawImage(heroDead, hx - 47, hy - 5, 170, 220); // Image Height and Width for pirateUp
   }
 
@@ -121,7 +121,7 @@ function init() {
      
       if (e.keyCode === 32) {
         // If the space bar is released
-        heroStatus = false; // Set heroStatus back to false
+        heroStatus = true; // Set heroStatus back to true
       }
 
     },
