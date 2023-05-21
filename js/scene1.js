@@ -67,15 +67,7 @@
             rockImage.src = "./Images/rock.png"; // set the image file path for Cyclop left
             ctx.drawImage(rockImage, rx, ry, 250, 200); // Image Height and Width for Cyclop left 
       }
-/*
-      function heroDown()
-      {
-            var heroDown = new Image(); //make image object for pirateUp
-            heroDown.src = "./Images/hero-scene1.png"; // set the image file path for pirateUp
-            ctx.drawImage(heroDown, hx, hy,100,200); // Image Height and Width for pirateUp
-          
-      }
-*/
+
       function heroUp()
       {
             var heroUp = new Image(); //make image object for pirateUp
