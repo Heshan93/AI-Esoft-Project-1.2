@@ -68,22 +68,28 @@ function init() {
   function batmove() {
     var dx = hx - cx; // Calculate the difference in X positions
     var dy = hy - cy; // Calculate the difference in Y positions
-
-    // Calculate the distance and angle between the bat and the hero
-    // var distance = Math.sqrt(dx * dx + dy * dy);
+    var distance = Math.sqrt(dx * dx + dy * dy); // Calculate the distance between the bat and the hero
+  
     var angle = Math.atan2(dy, dx);
-
+  
     // Calculate the movement speed of the bat
     var speed = 2;
-
+  
+    if (heroStatus == "fire" && distance < 500) {
+      // If heroStatus is "fire" and bat is near the hero
+      // Move the bat away from the hero
+      speed *= -1; // Reverse the direction of movement
+    }
+  
     // Calculate the movement in X and Y directions
     var moveX = speed * Math.cos(angle);
     var moveY = speed * Math.sin(angle);
-
+  
     // Update the bat's position
     cx += moveX;
     cy += moveY;
   }
+
 
   /* ===================| Visibility | =================== */
   function checkVisibility() {
