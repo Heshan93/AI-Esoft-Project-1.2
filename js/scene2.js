@@ -7,7 +7,7 @@ function init() {
   ctx.rect(0, 0, 1200, 749);
   ctx.fill();
 
-  //////////Loading Image Object & image draw function  for 1st seen//////////////////
+  //////////Loading Image Object & image draw function  for 2st seen//////////////////
 
   var backgroundimage = new Image(); //make image object
   backgroundimage.src = "./Images/Dongen.webp"; // set the image file path
@@ -58,6 +58,12 @@ function init() {
     pirateDead.src = "./Images/dungeon.png"; // set the image file path for pirateUp
     ctx.drawImage(pirateDead, 900, 270, 500, 300); // Image Height and Width for pirateUp
   }
+
+
+
+
+   /* ===================================================| Bat Movement controls |=================================================== */
+
 
   function batmove() {
 
@@ -156,7 +162,7 @@ function init() {
 
   function clear() {
     ctx.drawImage(backgroundimage, 0, 0, cnv.width, cnv.height); // Image Height and Width
-    //ctx.drawImage(shootRemove, 0, 0, cnv.width, cnv.height); // Image Height and Width
+   
   }
 
   // Call set BatStatus  every 3 seconds
@@ -167,6 +173,9 @@ function init() {
       BatStatus = false;
     }
   }, 3000);
+
+
+
 
   function draw() {
     dungeon();
