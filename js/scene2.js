@@ -22,8 +22,8 @@
       var SPEED = 5;
 
       // Coordinates of Cyclope (Monster)
-      var cx = 280; // Cyclop X coordinate 
-      var cy = 160;// Cyclop y coordinate 
+      var cx = 850; // Cyclop X coordinate 
+      var cy = 0;// Cyclop y coordinate 
 
       // Coordinates of the Rock
       rx = 350;
@@ -32,41 +32,21 @@
 
       var heroStatus = false; // Hero doesn't move
 
-      var cyclopStatus = false;// Cyclop sleep
-
-      // initialize visibility duration count
-      var count = 0;
-
+ 
       hourcount = 0;
 
 
-      function CyclopSleep()
+      function bat()
       {
-            var CyclopImageSleep = new Image(); //make image object for Cyclop
-            CyclopImageSleep.src = "./Images/monster-sleeping.png"; // set the image file path for Cyclop
-            ctx.drawImage(CyclopImageSleep, cx, cy, 400,208); // Image Height and Width for Cyclop
+            var batFly = new Image(); //make image object for Cyclop
+            batFly.src = "./Images/bat.png"; // set the image file path for Cyclop
+            ctx.drawImage(batFly, cx, cy, 200,100); // Image Height and Width for Cyclop
       }
 
-      function CyclopWake()
-      {
-            var CyclopImagWake = new Image(); //make image object for Cyclop left
-            CyclopImagWake.src = "./Images/monster-awaken.png"; // set the image file path for Cyclop left
-            ctx.drawImage(CyclopImagWake, cx, cy, 400,208); // Image Height and Width for Cyclop left 
-      }
 
-      function CyclopCommand()
-      {
-            var CyclopImgCommand = new Image(); //make image object for Cyclop left
-            CyclopImgCommand.src = "./Images/monster-stop.png"; // set the image file path for Cyclop left
-            ctx.drawImage(CyclopImgCommand, cx, cy, 400,208); // Image Height and Width for Cyclop left 
-      }
 
-      function rock()
-      {
-            var rockImage = new Image(); //make image object for Cyclop left
-            rockImage.src = "./Images/rock.png"; // set the image file path for Cyclop left
-            ctx.drawImage(rockImage, rx, ry, 250, 200); // Image Height and Width for Cyclop left 
-      }
+
+    
 
       function heroDown()
       {
@@ -150,7 +130,7 @@
 
 
   /* ===================================================| Hero moving controls |=================================================== */
-  function heroMove()
+  function upDate()
   {
     
 
@@ -164,24 +144,9 @@
         hx = hx + SPEED;
       }
 
-      if (EnemyCanSee == true && cyclopStatus == true){
-        //enemyCOLOR = "red";
-        count = count + 1; 
-      } else {
-        count = 0;
-      }
 
-      if (count > 40) {  //player was visible for 3 seconds
-        CyclopCommand();
-        //shootHero(); 
-      }
-      if (count > 80) {  //player was visible for 3 seconds
-        //CyclopCommand();
-        shootHero(); 
-        heroStatus = "dead";
-      }
 
-      
+
   }
   /* ===================================================| / Hero moving controls |=================================================== */
 
@@ -211,17 +176,13 @@
   {
     dungeon();
    
-      if(cyclopStatus == true)
-      {
-        CyclopWake();
-      }
-      else
-      {
-        CyclopSleep();
-      }
+
+     bat();
+    
+  
 
       
-      rock();
+     
       
       if(heroStatus == true)
         {
@@ -244,9 +205,9 @@
   function Loop() {
     clear();
     draw();
-    heroMove();
+    upDate();
     
-    hourcount = hourcount+1;
+
     
     setTimeout(Loop, 20);  //call loop every 20 mili sec 
 
