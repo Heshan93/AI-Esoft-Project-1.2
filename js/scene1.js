@@ -30,7 +30,7 @@
       ry = 325;
 
 
-      var heroStatus = false; // Hero doesn't move
+      var heroStatus = true; // Hero doesn't move
 
       var cyclopStatus = false;// Cyclop sleep
 
@@ -67,7 +67,7 @@
             rockImage.src = "./Images/rock.png"; // set the image file path for Cyclop left
             ctx.drawImage(rockImage, rx, ry, 250, 200); // Image Height and Width for Cyclop left 
       }
-
+/*
       function heroDown()
       {
             var heroDown = new Image(); //make image object for pirateUp
@@ -75,14 +75,14 @@
             ctx.drawImage(heroDown, hx, hy,100,200); // Image Height and Width for pirateUp
           
       }
-
+*/
       function heroUp()
       {
             var heroUp = new Image(); //make image object for pirateUp
             heroUp.src = "./Images/hero-scene1.png"; // set the image file path for pirateUp
             ctx.drawImage(heroUp, hx, hy, 100,200); // Image Height and Width for pirateUp
       }
-            
+           
       function heroDead()
       {
             var heroDead = new Image(); //make image object for pirateUp
@@ -137,13 +137,13 @@
   addEventListener("keydown",  function (e) 
   {
     keyPress[e.keyCode] = true; // If press True
-    heroStatus = true;   // to change pirate image 
+   
   }, false);
 
   addEventListener("keyup",   function (e)  
   {
     delete keyPress[e.keyCode];
-      heroStatus = false; // to change pirate image 
+    
   }, false);
 
 
@@ -178,8 +178,10 @@
       if (count > 80) {  //player was visible for 3 seconds
         //CyclopCommand();
         shootHero(); 
-        heroStatus = "dead";
+        heroStatus = false;
       }
+
+
   }
   /* ===================================================| / Hero moving controls |=================================================== */
 
@@ -225,16 +227,12 @@
         {
           heroUp();
         }
-        else if(heroStatus == "dead")
+        else if(heroStatus == false)
         {
           heroDead();
-      } else{
-        heroDown();
-      }
+        }
 
-        
-
-
+      
   }
 
 
