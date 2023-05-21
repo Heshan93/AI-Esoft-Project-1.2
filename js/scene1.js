@@ -98,7 +98,7 @@
 
       function shootHero()
       {
-          ctx.lineWidth = 8;
+          ctx.lineWidth = 5;
           ctx.strokeStyle = 'red';
           ctx.moveTo(505,210);
           ctx.lineTo(hx+35,hy+100);
@@ -146,6 +146,9 @@
   function heroMove()
   {
     
+    if (!heroStatus) {
+      return;
+    }
 
       checkVisibility();
 
