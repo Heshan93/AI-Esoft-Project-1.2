@@ -4,7 +4,7 @@
   function init()
   {
     
-      var cnv = document.getElementById("scene1"); 
+      var cnv = document.getElementById("scene3"); 
       var ctx = cnv.getContext("2d"); 
       ctx.fillStyle = "white";   // set background to white
       ctx.rect(0,0,1200,749);
@@ -13,12 +13,12 @@
       //////////Loading Image Object & image draw function  for 1st seen//////////////////
 
       var backgroundimage = new Image(); //make image object
-      backgroundimage.src = "./Images/scene1-background.png"; // set the image file path
+      backgroundimage.src = "./Images/Dongen.webp"; // set the image file path
 
     
       // Coordinates and speed of Hero (Player)
-      var hx = 10;  // Hero X coordinate 
-      var hy = 350; // Hero Y coordinate 
+      var hx = 10;  // Hero X coordinate
+      var hy = 350; // Hero Y coordinate
       var SPEED = 5;
 
       // Coordinates of Cyclope (Monster)
@@ -30,7 +30,7 @@
       ry = 325;
 
 
-      var heroStatus = true; // Hero doesn't move
+      var heroStatus = false; // Hero doesn't move
 
       var cyclopStatus = false;// Cyclop sleep
 
@@ -68,13 +68,21 @@
             ctx.drawImage(rockImage, rx, ry, 250, 200); // Image Height and Width for Cyclop left 
       }
 
+      function heroDown()
+      {
+            var heroDown = new Image(); //make image object for pirateUp
+            heroDown.src = "./Images/hero-scene1.png"; // set the image file path for pirateUp
+            ctx.drawImage(heroDown, hx, hy,100,200); // Image Height and Width for pirateUp
+          
+      }
+
       function heroUp()
       {
             var heroUp = new Image(); //make image object for pirateUp
             heroUp.src = "./Images/hero-scene1.png"; // set the image file path for pirateUp
             ctx.drawImage(heroUp, hx, hy, 100,200); // Image Height and Width for pirateUp
       }
-           
+            
       function heroDead()
       {
             var heroDead = new Image(); //make image object for pirateUp
@@ -98,7 +106,7 @@
 
       function shootHero()
       {
-          ctx.lineWidth = 5;
+          ctx.lineWidth = 8;
           ctx.strokeStyle = 'red';
           ctx.moveTo(505,210);
           ctx.lineTo(hx+35,hy+100);
@@ -112,17 +120,16 @@
 
 
     /* ===================| Visibility | =================== */
-
-    function checkVisibility() {
-      if ((hx < 350 || hx > 530) && (hx < 950 || hx > 1200)) {
+    function checkVisibility()
+    {
+      if ((hx < 350) || (hx > 530)){
         EnemyCanSee = true;
-      } else {
+      }else{
         EnemyCanSee = false;
         cantSee();
-      }
+      } 
     }
-    
-  
+
 
   /* ===================================================| Handle Keyboard controls |=================================================== */
 
@@ -130,13 +137,13 @@
   addEventListener("keydown",  function (e) 
   {
     keyPress[e.keyCode] = true; // If press True
-   
+    heroStatus = true;   // to change pirate image 
   }, false);
 
   addEventListener("keyup",   function (e)  
   {
     delete keyPress[e.keyCode];
-    
+      heroStatus = false; // to change pirate image 
   }, false);
 
 
@@ -146,26 +153,16 @@
   function heroMove()
   {
     
-    if (!heroStatus) {
-      return;
-    }
 
       checkVisibility();
 
-
-      if (37 in keyPress) { // left arrow
-        if (hx - SPEED >= 0) { // Check if moving left won't exceed left boundary
-          hx -= SPEED;
-        }
+      if(37 in keyPress){ // left arrorw
+        hx =  hx - SPEED;
       }
     
-      if (39 in keyPress) { // right arrow
-        if (hx + SPEED <= cnv.width - 100) { // Check if moving right won't exceed right boundary
-          hx += SPEED;
-        }
+      if (39 in keyPress){  // right arrow
+        hx = hx + SPEED;
       }
-
-
 
       if (EnemyCanSee == true && cyclopStatus == true){
         //enemyCOLOR = "red";
@@ -179,14 +176,12 @@
         //shootHero(); 
       }
       if (count > 80) {  //player was visible for 3 seconds
-       
+        //CyclopCommand();
         shootHero(); 
-        heroStatus = false;
+        heroStatus = "dead";
       }
 
-      if(hx>1090){ // Loads the seen 2 
-        window.open("./index2.html", "_self");
-      }
+      
   }
   /* ===================================================| / Hero moving controls |=================================================== */
 
@@ -232,12 +227,16 @@
         {
           heroUp();
         }
-        else if(heroStatus == false)
+        else if(heroStatus == "dead")
         {
           heroDead();
-        }
+      } else{
+        heroDown();
+      }
 
-      
+        
+
+
   }
 
 
@@ -247,7 +246,7 @@
     draw();
     heroMove();
     
-   
+    hourcount = hourcount+1;
     
     setTimeout(Loop, 20);  //call loop every 20 mili sec 
 
