@@ -17,20 +17,18 @@ function init() {
   var hy = 350; // Hero Y coordinate
   var SPEED = 5;
 
-  // Coordinates of Cyclope (Monster)
-  var cx = 850; // Cyclop X coordinate
-  var cy = 0; // Cyclop y coordinate
+  // Coordinates of Bat (Monster)
+  var cx = 850; // Bat X coordinate
+  var cy = 0; // Bat y coordinate
 
-  // Coordinates of the Rock
-  rx = 350;
-  ry = 325;
+
 
   var heroStatus = true; // Hero doesn't move
 
   function bat() {
-    var batFly = new Image(); //make image object for Cyclop
-    batFly.src = "./Images/bat.png"; // set the image file path for Cyclop
-    ctx.drawImage(batFly, cx, cy, 200, 100); // Image Height and Width for Cyclop
+    var batFly = new Image(); //make image object for Bat
+    batFly.src = "./Images/bat.png"; // set the image file path for Bat
+    ctx.drawImage(batFly, cx, cy, 200, 100); // Image Height and Width for Bat
   }
 
 
@@ -53,11 +51,7 @@ function init() {
     ctx.drawImage(heroDead, hx - 47, hy - 5, 170, 220); // Image Height and Width for pirateUp
   }
 
-  function cantSee() {
-    var pirateDead = new Image(); //make image object for pirateUp
-    pirateDead.src = "./Images/cant-see.png"; // set the image file path for pirateUp
-    ctx.drawImage(pirateDead, hx + 100, hy, 200, 70); // Image Height and Width for pirateUp
-  }
+
 
   function dungeon() {
     var pirateDead = new Image(); //make image object for pirateUp
@@ -66,6 +60,8 @@ function init() {
   }
 
   function batmove() {
+
+    
     var dx = hx - cx; // Calculate the difference in X positions
     var dy = hy - cy; // Calculate the difference in Y positions
     var distance = Math.sqrt(dx * dx + dy * dy); // Calculate the distance between the bat and the hero
@@ -113,7 +109,7 @@ function init() {
     function (e) {
       keyPress[e.keyCode] = true; // If press True
      
-      if (e.keyCode === 32) {
+      if (e.keyCode === 32 && heroStatus !== false) {
         // If the space bar is pressed
         heroStatus = "fire"; // Set heroStatus to "fire"
       }
@@ -140,16 +136,25 @@ function init() {
 
   /* ===================================================| Hero moving controls |=================================================== */
   function upDate() {
-    checkVisibility();
+    
 
+    if (!heroStatus) {
+      return; // // Stop moving if the hero is dead 
+    }
+
+    
     if (37 in keyPress) {
       // left arrorw
-      hx = hx - SPEED;
+      if (hx - SPEED >= 0) { // Check if moving left won't exceed left boundary
+        hx -= SPEED;
+      }
     }
 
     if (39 in keyPress) {
       // right arrow
-      hx = hx + SPEED;
+      if (hx + SPEED <= cnv.width - 100) { // Check if moving right won't exceed right boundary
+        hx += SPEED;
+      }
     }
 
 
@@ -162,12 +167,12 @@ function init() {
     //ctx.drawImage(shootRemove, 0, 0, cnv.width, cnv.height); // Image Height and Width
   }
 
-  // Call set cyclopStatus  every 3 seconds
+  // Call set BatStatus  every 3 seconds
   setInterval(function () {
     if (Math.random() < 0.5) {
-      cyclopStatus = true;
+      BatStatus = true;
     } else {
-      cyclopStatus = false;
+      BatStatus = false;
     }
   }, 3000);
 

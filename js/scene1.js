@@ -147,7 +147,7 @@
   {
     
     if (!heroStatus) {
-      return;
+      return;  // Stop moving if the hero is dead 
     }
 
       checkVisibility();
