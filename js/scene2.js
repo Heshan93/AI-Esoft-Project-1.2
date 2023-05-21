@@ -79,6 +79,10 @@ function init() {
       // If heroStatus is "fire" and bat is near the hero
       // Move the bat away from the hero
       speed *= -1; // Reverse the direction of movement
+    }else if (distance < 100) {
+      // If bat is near the hero without heroStatus being "fire"
+      // Set heroStatus to false
+    heroStatus = false;
     }
   
     // Calculate the movement in X and Y directions
