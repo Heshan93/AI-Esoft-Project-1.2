@@ -17,8 +17,8 @@
 
     
       // Coordinates and speed of Hero (Player)
-      var hx = 10;  // Hero X coordinate
-      var hy = 350; // Hero Y coordinate
+      var hx = 10;  // Hero X coordinate 
+      var hy = 350; // Hero Y coordinate 
       var SPEED = 5;
 
       // Coordinates of Cyclope (Monster)
@@ -173,7 +173,9 @@
         heroStatus = false;
       }
 
-
+      if(hx>1100){ // Loads the seen 2 
+        window.open("./index2.html", "_self");
+      }
   }
   /* ===================================================| / Hero moving controls |=================================================== */
 
@@ -234,7 +236,7 @@
     draw();
     heroMove();
     
-    hourcount = hourcount+1;
+   
     
     setTimeout(Loop, 20);  //call loop every 20 mili sec 
 
