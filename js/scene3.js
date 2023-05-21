@@ -21,8 +21,10 @@ function init() {
   var cx = 850; // Bat X coordinate
   var cy = 0; // Bat y coordinate
 
+  // Coordinates and speed of balloon
   var bx = 200;
   var by = 0;
+  var bSPEED = 3;
 
 
   var heroStatus = true; // Hero doesn't move
@@ -42,18 +44,18 @@ function init() {
 
   
   function heroOnGasBallon() {
-    var heroOnGasBallon = new Image(); //make image object for pirateUp
-    heroOnGasBallon.src = "./Images/man on the galoon.avif"; // set the image file path for pirateUp
-    ctx.drawImage(heroOnGasBallon, bx, by, 100, 200); // Image Height and Width for pirateUp
+    var heroOnGasBallonImg = new Image(); //make image object for pirateUp
+    heroOnGasBallonImg.src = "./Images/man on the galoon.avif"; // set the image file path for pirateUp
+    ctx.drawImage(heroOnGasBallonImg, bx, by, 100, 200); // Image Height and Width for pirateUp
   }
 
   function gasBallon() {
     if (hx === 200) {
       heroOnGasBallon();
     } else {
-      var gasBallon = new Image();
-      gasBallon.src = "./Images/gas ballon.jpg";
-      ctx.drawImage(gasBallon, bx, by, 100, 200);
+      var gasBallonImg = new Image();
+      gasBallonImg.src = "./Images/gas ballon.jpg";
+      ctx.drawImage(gasBallonImg, bx, by, 100, 200);
     }
   }
 
@@ -86,45 +88,6 @@ function init() {
 
 
 
-   /* ===================================================| Bat Movement controls |=================================================== */
-
-
-  function batmove() {
-
-    
-    var dx = hx - cx; // Calculate the difference in X positions
-    var dy = hy - cy; // Calculate the difference in Y positions
-    var distance = Math.sqrt(dx * dx + dy * dy); // Calculate the distance between the bat and the hero
-  
-    var angle = Math.atan2(dy, dx);
-  
-    // Calculate the movement speed of the bat
-    var speed = 2;
-  
-    if (heroStatus == "fire" && distance < 500) {
-      // If heroStatus is "fire" and bat is near the hero
-      // Move the bat away from the hero
-      speed *= -1; // Reverse the direction of movement
-    }else if (distance < 100) {
-      // If bat is near the hero without heroStatus being "fire"
-      // Set heroStatus to false
-    heroStatus = false;
-    }
-  
-    // Calculate the movement in X and Y directions
-    var moveX = speed * Math.cos(angle);
-    var moveY = speed * Math.sin(angle);
-  
-    // Update the bat's position
-    cx += moveX;
-    cy += moveY;
-  }
-
-
-
-
-  /* ===================================================| Handle Keyboard controls |=================================================== */
-
   var keyPress = {}; // initialize the  key presses
   addEventListener(
     "keydown",
@@ -147,7 +110,7 @@ function init() {
   );
 
   /* ===================================================| Hero moving controls |=================================================== */
-  function upDate() {
+  function heroUpDate() {
     
 
     if (hx === 200) {
@@ -174,7 +137,7 @@ function init() {
         hx += SPEED;
       }
     }
-
+/*
       if (38 in keyPress) {
         // Up arrorw
         if (hy - SPEED >= 0) { // Check if moving Up won't exceed UP boundary
@@ -189,13 +152,60 @@ function init() {
         }
 
     }
-
+*/
     if(hx>1090){ // Loads the seen 4 
       window.open("./index3.html", "_self");
     }
     
   }
   /* ===================================================| / Hero moving controls |=================================================== */
+
+
+
+
+
+
+ /* ===================================================| Hero moving controls |=================================================== */
+ 
+ function BalloonUpDate() {
+  if (heroStatus === false) {
+    if (37 in keyPress) {
+      // left arrow
+      if (bx - bSPEED >= 0) { // Check if moving left won't exceed left boundary
+        bx -= bSPEED;
+      }
+    }
+
+    if (39 in keyPress) {
+      // right arrow
+      if (bx + bSPEED <= cnv.width - 100) { // Check if moving right won't exceed right boundary
+        bx += bSPEED;
+      }
+    }
+
+    if (38 in keyPress) {
+      // Up arrow
+      if (by - bSPEED >= 0) { // Check if moving Up won't exceed UP boundary
+        by -= bSPEED;
+      }
+    }
+
+    if (40 in keyPress) {
+      // Down arrow
+      if (by + bSPEED <= cnv.height - 290) { // Check if moving Down won't exceed Down boundary
+        by += bSPEED;
+      }
+    }
+  }
+}
+
+
+/* ===================================================| / Hero moving controls |=================================================== */
+
+
+
+
+
 
   function clear() {
     ctx.drawImage(backgroundimage, 0, 0, cnv.width, cnv.height); // Image Height and Width
@@ -217,11 +227,14 @@ function init() {
   function draw() {
     dungeon();
     gasBallon()
-    bat();
+   
 
 
     if (heroStatus == true) {
       heroUp();
+    } else {
+      heroOnGasBallon();
+      
     }
 
   }
@@ -229,10 +242,14 @@ function init() {
   function Loop() {
     clear();
     draw();
-    upDate();
-    batmove();
 
-    setTimeout(Loop, 20); //call loop every 20 mili sec
+    if (heroStatus) {
+      heroUpDate();
+    } else {
+      BalloonUpDate();
+    }
+
+    setTimeout(Loop, 20); //call loop every 20 milliseconds
   } //end loop
 
   Loop();
