@@ -98,7 +98,7 @@
 
       function shootHero()
       {
-          ctx.lineWidth = 8;
+          ctx.lineWidth = 5;
           ctx.strokeStyle = 'red';
           ctx.moveTo(505,210);
           ctx.lineTo(hx+35,hy+100);
@@ -112,16 +112,17 @@
 
 
     /* ===================| Visibility | =================== */
-    function checkVisibility()
-    {
-      if ((hx < 350) || (hx > 530)){
+
+    function checkVisibility() {
+      if ((hx < 350 || hx > 530) && (hx < 950 || hx > 1200)) {
         EnemyCanSee = true;
-      }else{
+      } else {
         EnemyCanSee = false;
         cantSee();
-      } 
+      }
     }
-
+    
+  
 
   /* ===================================================| Handle Keyboard controls |=================================================== */
 
@@ -145,6 +146,9 @@
   function heroMove()
   {
     
+    if (!heroStatus) {
+      return;
+    }
 
       checkVisibility();
 
@@ -168,7 +172,7 @@
         //shootHero(); 
       }
       if (count > 80) {  //player was visible for 3 seconds
-        //CyclopCommand();
+       
         shootHero(); 
         heroStatus = false;
       }
