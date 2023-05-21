@@ -91,15 +91,7 @@ function init() {
   }
 
 
-  /* ===================| Visibility | =================== */
-  function checkVisibility() {
-    if (hx < 350 || hx > 530) {
-      EnemyCanSee = true;
-    } else {
-      EnemyCanSee = false;
-      cantSee();
-    }
-  }
+
 
   /* ===================================================| Handle Keyboard controls |=================================================== */
 
