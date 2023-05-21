@@ -1,0 +1,13 @@
+html,
+body {
+    /* Set the margin and padding of the html and body elements to 0 */
+  margin: 0;
+  padding: 0; 
+  height: 100%;
+  overflow: hidden; /* content from overflowing outside the viewport */
+}
+#scene1 {
+    /*  width and height to 100% of the viewport */
+  width: 100%;
+  height: auto;
+}
