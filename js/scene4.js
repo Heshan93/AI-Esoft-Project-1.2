@@ -5,7 +5,7 @@ function init() {
   var ctx = cnv.getContext("2d");
   ctx.fillStyle = "red"; // set background to white
   ctx.rect(0, 0, 1200, 749);
- // ctx.fill();
+  ctx.fill();
 
 
   
