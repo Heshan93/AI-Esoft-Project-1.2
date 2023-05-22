@@ -4,24 +4,24 @@ function init() {
   var cnv = document.getElementById("scene3");
   var ctx = cnv.getContext("2d");
   ctx.fillStyle = "white"; // set background to white
-  ctx.rect(0, 0, 1200, 749);
+  ctx.rect(0, 400, 1200, 749);
   ctx.fill();
 
   //////////Loading Image Object & image draw function  for 2st seen//////////////////
 
   var backgroundimage = new Image(); //make image object
-  backgroundimage.src = "./Images/mountain.jpeg"; // set the image file path
+  backgroundimage.src = "./Images/mountain-scene.jpg"; // set the image file path
 
   // Coordinates and speed of Hero (Player)
-  var hx = 0; // Hero X coordinate
-  var hy = 0; // Hero Y coordinate
+  var hx = 20; // Hero X coordinate
+  var hy = 340; // Hero Y coordinate
   var SPEED = 5;
 
 
 
   // Coordinates and speed of balloon
   var bx = 200;
-  var by = 0;
+  var by = 250;
   var bSPEED = 3;
 
 
@@ -32,15 +32,15 @@ function init() {
 
   function heroUp() {
     var heroUp = new Image(); //make image object for pirateUp
-    heroUp.src = "./Images/hero-scene1.png"; // set the image file path for pirateUp
-    ctx.drawImage(heroUp, hx, hy, 50, 100); // Image Height and Width for pirateUp
+    heroUp.src = "./Images/hero-sword.png"; // set the image file path for pirateUp
+    ctx.drawImage(heroUp, hx, hy, 90, 190); // Image Height and Width for pirateUp
   }
 
   
   function heroOnGasBallon() {
     var heroOnGasBallonImg = new Image(); //make image object for pirateUp
-    heroOnGasBallonImg.src = "./Images/man on the galoon.avif"; // set the image file path for pirateUp
-    ctx.drawImage(heroOnGasBallonImg, bx, by, 100, 200); // Image Height and Width for pirateUp
+    heroOnGasBallonImg.src = "./Images/balloon-hero.png"; // set the image file path for pirateUp
+    ctx.drawImage(heroOnGasBallonImg, bx, by, 200, 300); // Image Height and Width for pirateUp
   }
 
   function gasBallon() {
@@ -48,8 +48,8 @@ function init() {
       heroOnGasBallon();
     } else {
       var gasBallonImg = new Image();
-      gasBallonImg.src = "./Images/gas ballon.jpg";
-      ctx.drawImage(gasBallonImg, bx, by, 100, 200);
+      gasBallonImg.src = "./Images/balloon-empty.png";
+      ctx.drawImage(gasBallonImg, bx, by, 200, 300);
     }
   }
 
@@ -67,8 +67,8 @@ function init() {
 
   function dungeon() {
     var pirateDead = new Image(); //make image object for pirateUp
-    pirateDead.src = "./Images/dungeon.png"; // set the image file path for pirateUp
-    ctx.drawImage(pirateDead, -100, 0, 300, 100); // Image Height and Width for pirateUp
+    pirateDead.src = "./Images/cave-door-out.png"; // set the image file path for pirateUp
+    ctx.drawImage(pirateDead, 0, 225, 230, 300); // Image Height and Width for pirateUp
   }
 
 
@@ -199,10 +199,10 @@ function init() {
 
 
   function draw() {
-    dungeon();
+    
     gasBallon()
    
-
+    dungeon();
 
     if (heroStatus == true) {
       heroUp();
@@ -210,6 +210,8 @@ function init() {
       heroOnGasBallon();
       
     }
+
+    
 
   }
 

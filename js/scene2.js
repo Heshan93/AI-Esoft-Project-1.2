@@ -14,7 +14,7 @@ function init() {
 
   // Coordinates and speed of Hero (Player)
   var hx = 10; // Hero X coordinate
-  var hy = 350; // Hero Y coordinate
+  var hy = 150; // Hero Y coordinate
   var SPEED = 5;
 
   // Coordinates of Bat (Monster)
@@ -28,35 +28,33 @@ function init() {
   function bat() {
     var batFly = new Image(); //make image object for Bat
     batFly.src = "./Images/bat.png"; // set the image file path for Bat
-    ctx.drawImage(batFly, cx, cy, 200, 100); // Image Height and Width for Bat
+    ctx.drawImage(batFly, cx, cy, 250, 200); // Image Height and Width for Bat
   }
 
 
   function heroUp() {
     var heroUp = new Image(); //make image object for pirateUp
-    heroUp.src = "./Images/hero-scene1.png"; // set the image file path for pirateUp
-    ctx.drawImage(heroUp, hx, hy, 100, 200); // Image Height and Width for pirateUp
+    heroUp.src = "./Images/hero-sword.png"; // set the image file path for pirateUp
+    ctx.drawImage(heroUp, hx, hy, 200, 400); // Image Height and Width for pirateUp
   }
 
 
   function heroFire() {
     var heroFire = new Image(); //make image object for pirateUp
-    heroFire.src = "./Images/hero with fire.png"; // set the image file path for pirateUp
-    ctx.drawImage(heroFire, hx, hy, 100, 200); // Image Height and Width for pirateUp
+    heroFire.src = "./Images/hero-torch.png"; // set the image file path for pirateUp
+    ctx.drawImage(heroFire, hx, hy, 200, 400); // Image Height and Width for pirateUp
   }
 
   function heroDead() {
     var heroDead = new Image(); //make image object for pirateUp
-    heroDead.src = "./Images/images.jpeg"; // set the image file path for pirateUp
-    ctx.drawImage(heroDead, hx - 47, hy - 5, 170, 220); // Image Height and Width for pirateUp
+    heroDead.src = "./Images/hero-blood.png"; // set the image file path for pirateUp
+    ctx.drawImage(heroDead, hx , hy - 5,200, 400); // Image Height and Width for pirateUp
   }
-
-
 
   function dungeon() {
     var pirateDead = new Image(); //make image object for pirateUp
-    pirateDead.src = "./Images/dungeon.png"; // set the image file path for pirateUp
-    ctx.drawImage(pirateDead, 900, 270, 500, 300); // Image Height and Width for pirateUp
+    pirateDead.src = "./Images/cave-door.png"; // set the image file path for pirateUp
+    ctx.drawImage(pirateDead, 900, 150, 700, 400); // Image Height and Width for pirateUp
   }
 
 
@@ -182,7 +180,7 @@ function init() {
   function draw() {
     dungeon();
 
-    bat();
+    
 
 
     if (heroStatus == true) {
@@ -192,6 +190,8 @@ function init() {
     } else if (heroStatus == "fire") {
       heroFire();
     }
+
+    bat();
 
   }
 
