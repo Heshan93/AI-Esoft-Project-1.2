@@ -127,9 +127,7 @@ function init() {
       }
     }
 
-    if(hx>1090){ // Loads the seen 4 
-      window.open("./index3.html", "_self");
-    }
+
     
   }
   /* ===================================================| / Hero moving controls |=================================================== */
@@ -170,7 +168,12 @@ function init() {
         by += bSPEED;
       }
     }
+
+    if(bx>1090){ // Loads the seen 4 
+      window.open("./index4.html", "_self");
+    }
   }
+
 }
 
 
