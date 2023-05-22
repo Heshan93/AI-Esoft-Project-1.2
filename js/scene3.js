@@ -169,9 +169,11 @@ function init() {
       }
     }
 
-    if(bx>1090){ // Loads the seen 4 
+    if(bx>1050){ // Loads the seen 4 
       window.open("./index4.html", "_self");
     }
+
+   
   }
 
 }
