@@ -3,7 +3,7 @@ window.onload = init();
 function init() {
   var cnv = document.getElementById("scene4");
   var ctx = cnv.getContext("2d");
-  ctx.fillStyle = "red"; // set background to white
+  ctx.fillStyle = "white"; // set background to white
   ctx.rect(0, 0, 1200, 749);
   ctx.fill();
 
