@@ -7,7 +7,7 @@
       var cnv = document.getElementById("scene1"); 
       var ctx = cnv.getContext("2d"); 
       ctx.fillStyle = "white";   // set background to white
-      ctx.rect(0,0,1200,749);
+      //ctx.rect(0,0,1200,749);
       //ctx.fill();
 
       //////////Loading Image Object & image draw function  for 1st seen//////////////////
