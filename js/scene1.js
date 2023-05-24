@@ -108,7 +108,7 @@
           ctx.drawImage(demoImage, hx-25, hy+10, 150, 150);  
       }
 
-    /* ===================| Loading Image Object & image draw function for 1st seen | =================== */
+    
 
 
     /* ===================| Visibility | =================== */
