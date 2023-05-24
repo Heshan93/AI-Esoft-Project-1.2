@@ -249,7 +249,7 @@
     
    
     
-    setTimeout(Loop, 20);  //call loop every 20 mili sec 
+    setTimeout(Loop, 30);  //call loop every 20 mili sec 
 
   } //end loop
 

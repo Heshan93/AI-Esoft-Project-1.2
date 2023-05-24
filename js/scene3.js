@@ -58,9 +58,10 @@
 
 
     function heroDead() {
+      
       var heroDead = new Image(); //make image object for pirateUp
-      heroDead.src = "./Images/images.jpeg"; // set the image file path for pirateUp
-      ctx.drawImage(heroDead, hx - 47, hy - 5, 170, 220); // Image Height and Width for pirateUp
+      heroDead.src = "./Images/hero-dead-scene1.png"; // set the image file path for pirateUp
+      ctx.drawImage(heroDead, bx, by , 200, 300); // Image Height and Width for pirateUp
     }
 
 
@@ -108,13 +109,14 @@ function bulltes(){
   ctx.closePath();
 }
 
+
+
+
+
 function updateBulletPosition() {
   if (!bulletHit) {
-    
-
     var directionX = bx - 0; // Calculate the direction towards the balloon's X position
     var directionY = by - 1; // Calculate the direction towards the balloon's Y position
-
 
     var magnitude = Math.sqrt(directionX * directionX + directionY * directionY);
     var normalizedDirectionX = directionX / magnitude;
@@ -135,6 +137,9 @@ function updateBulletPosition() {
       bulletHit = true;
       // Stop the movement of the balloon
       bSPEED = 0;
+      // Call heroDead() function
+      //heroDead();.
+      
     }
   }
 }
@@ -248,6 +253,20 @@ function fireBullet() {
         window.open("./index4.html", "_self");
       }
 
+      // Check for collision with bullet
+if (
+  bulletX >= bx &&
+  bulletX <= bx + 200 &&
+  bulletY >= by &&
+  bulletY <= by + 300
+) {
+  bulletHit = true;
+  // Stop the movement of the balloon
+  bSPEED = 0;
+  // Call heroDead() function
+  heroDead();
+}
+
     
     }
 
@@ -279,33 +298,28 @@ function fireBullet() {
 
 
     function draw() {
-      
-      gasBallon()
-    
+      gasBallon();
       dungeon();
-
       firePit();
-
+    
       if (!bulletHit) {
         bulltes(); // Call the function to draw the bullet
       }
-      
+    
       enemy();
-
-     
-
+    
       if (heroStatus == true) {
         heroUp();
-      } else {
-        heroOnGasBallon();
-        
+      }else {
+          heroOnGasBallon();
+        }
       }
-
-
     
-      
+    
+    
+    
 
-    }
+
 
     function Loop() {
       clear();
@@ -318,11 +332,11 @@ function fireBullet() {
         BalloonUpDate();
       }
 
-      if(!heroStatus){
-
+      if (!heroStatus) {
         updateBulletPosition();
-
       }
+      
+
 
       
 
