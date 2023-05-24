@@ -110,8 +110,11 @@ function bulltes(){
 
 function updateBulletPosition() {
   if (!bulletHit) {
-    var directionX = 0; // Calculate the direction of the bullet (in this case, a straight line)
-    var directionY = 1; // Moving upwards (-1 means up, 1 means down, 0 means no movement)
+    
+
+    var directionX = bx - bulletX; // Calculate the direction towards the balloon's X position
+    var directionY = by - bulletY; // Calculate the direction towards the balloon's Y position
+
 
     var magnitude = Math.sqrt(directionX * directionX + directionY * directionY);
     var normalizedDirectionX = directionX / magnitude;
@@ -138,6 +141,16 @@ function updateBulletPosition() {
 
 
 
+
+// Function to fire the bullet from the fixed position
+function fireBullet() {
+  if (!bulletHit && Math.random() < 0.01) {
+    // Adjust the probability (0.01) as needed
+    bulletX = 200; // Fixed X position within the canvas
+    bulletY = 20; // Start the bullet from the top of the canvas
+    bulletHit = false;
+  }
+}
 
     var keyPress = {}; // initialize the  key presses
     addEventListener(
@@ -295,6 +308,7 @@ function updateBulletPosition() {
     function Loop() {
       clear();
       draw();
+      fireBullet(); // Call the function to randomly fire bullets
 
       if (heroStatus) {
         heroUpDate();
