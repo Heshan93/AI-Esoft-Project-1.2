@@ -81,6 +81,64 @@
 
 
 
+    function enemy() {
+      var enemyImg = new Image(); //make image object for pirateUp
+      enemyImg.src = "./Images/enemy.jpg"; // set the image file path for pirateUp
+      ctx.drawImage(enemyImg, 200, 20, 40, 70); // Image Height and Width for pirateUp
+
+
+  
+}
+
+
+
+
+
+
+var bulletX = 200;
+var bulletY = 20;
+var bulletHit = false;
+
+function bulltes(){
+  // Draw the bullet
+  ctx.beginPath();
+  ctx.arc(bulletX, bulletY, 5, 0, Math.PI * 2);
+  ctx.fillStyle = "red";
+  ctx.fill();
+  ctx.closePath();
+}
+
+function updateBulletPosition() {
+  if (!bulletHit) {
+    var directionX = 0; // Calculate the direction of the bullet (in this case, a straight line)
+    var directionY = 1; // Moving upwards (-1 means up, 1 means down, 0 means no movement)
+
+    var magnitude = Math.sqrt(directionX * directionX + directionY * directionY);
+    var normalizedDirectionX = directionX / magnitude;
+    var normalizedDirectionY = directionY / magnitude;
+
+    var bulletSpeed = 5; // Adjust the speed as needed
+
+    bulletX += normalizedDirectionX * bulletSpeed;
+    bulletY += normalizedDirectionY * bulletSpeed;
+
+    // Check for collision with balloon
+    if (
+      bulletX >= bx &&
+      bulletX <= bx + 200 &&
+      bulletY >= by &&
+      bulletY <= by + 300
+    ) {
+      bulletHit = true;
+      // Stop the movement of the balloon
+      bSPEED = 0;
+    }
+  }
+}
+
+
+
+
     var keyPress = {}; // initialize the  key presses
     addEventListener(
       "keydown",
@@ -215,6 +273,14 @@
 
       firePit();
 
+      if (!bulletHit) {
+        bulltes(); // Call the function to draw the bullet
+      }
+      
+      enemy();
+
+     
+
       if (heroStatus == true) {
         heroUp();
       } else {
@@ -235,6 +301,14 @@
       } else {
         BalloonUpDate();
       }
+
+      if(!heroStatus){
+
+        updateBulletPosition();
+
+      }
+
+      
 
       setTimeout(Loop, 20); //call loop every 20 milliseconds
     } //end loop
