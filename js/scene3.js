@@ -112,8 +112,8 @@ function updateBulletPosition() {
   if (!bulletHit) {
     
 
-    var directionX = bx - bulletX; // Calculate the direction towards the balloon's X position
-    var directionY = by - bulletY; // Calculate the direction towards the balloon's Y position
+    var directionX = bx - 0; // Calculate the direction towards the balloon's X position
+    var directionY = by - 1; // Calculate the direction towards the balloon's Y position
 
 
     var magnitude = Math.sqrt(directionX * directionX + directionY * directionY);
@@ -301,6 +301,8 @@ function fireBullet() {
         
       }
 
+
+    
       
 
     }
