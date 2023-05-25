@@ -109,7 +109,7 @@
       var normalizedDirectionX = directionX / magnitude;
       var normalizedDirectionY = directionY / magnitude;
 
-      var bulletSpeed = 4; // Adjust the speed as needed
+      var bulletSpeed = 4; 
 
       bulletX += normalizedDirectionX * bulletSpeed;
       bulletY += normalizedDirectionY * bulletSpeed;
@@ -122,7 +122,7 @@
   // Function to fire the bullet from the fixed position
   function fireBullet() {
     if (!bulletHit && Math.random() < 0.01) {
-      // Adjust the probability (0.01) as needed
+     
       bulletX = 200; // Fixed X position within the canvas
       bulletY = 40; // Start the bullet from the top of the canvas
       bulletHit = false;
@@ -250,15 +250,7 @@
       
       }
 
-      // Call set BatStatus  every 3 seconds
-      setInterval(function () {
-        if (Math.random() < 0.5) {
-          BatStatus = true;
-        } else {
-          BatStatus = false;
-        }
-      }, 3000);
-
+ 
 
 
 

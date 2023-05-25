@@ -106,9 +106,7 @@
           ctx.moveTo(505,210);
           ctx.lineTo(hx+35,hy+100);
           ctx.stroke();
-          var demoImage = new Image();   // make image object
-          demoImage.src = "./Images/blood.png";  // set image path
-          ctx.drawImage(demoImage, hx-25, hy+10, 150, 150);  
+         
       }
 
     
