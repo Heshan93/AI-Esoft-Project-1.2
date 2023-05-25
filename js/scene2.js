@@ -3,15 +3,14 @@ window.onload = init();
 function init() {
   var cnv = document.getElementById("scene2");
   var ctx = cnv.getContext("2d");
-  ctx.fillStyle = "white"; // set background to white
-  ctx.rect(0, 0, 1200, 749);
- // ctx.fill();
+ 
 
   //////////Loading Image Object & image draw function  for 2st seen//////////////////
 
   var backgroundimage = new Image(); //make image object
   backgroundimage.src = "./Images/Dongen.webp"; // set the image file path
 
+  
   // Coordinates and speed of Hero (Player)
   var hx = 10; // Hero X coordinate
   var hy = 230; // Hero Y coordinate
@@ -33,35 +32,35 @@ function init() {
 
 
   function heroUp() {
-    var heroUp = new Image(); //make image object for pirateUp
-    heroUp.src = "./Images/hero-sword.png"; // set the image file path for pirateUp
-    ctx.drawImage(heroUp, hx, hy, 150, 325); // Image Height and Width for pirateUp
+    var heroUp = new Image(); //make image object for Knight
+    heroUp.src = "./Images/hero-sword.png"; // set the image file path for Knight
+    ctx.drawImage(heroUp, hx, hy, 150, 325); // Image Height and Width for Knight
   }
 
 
   function heroFire() {
-    var heroFire = new Image(); //make image object for pirateUp
-    heroFire.src = "./Images/hero-torch.png"; // set the image file path for pirateUp
-    ctx.drawImage(heroFire, hx, hy, 150, 325); // Image Height and Width for pirateUp
+    var heroFire = new Image(); //make image object for Knight
+    heroFire.src = "./Images/hero-torch.png"; // set the image file path for Knight
+    ctx.drawImage(heroFire, hx, hy, 150, 325); // Image Height and Width for Knight
   }
 
   function heroDead() {
-    var heroDead = new Image(); //make image object for pirateUp
-    heroDead.src = "./Images/hero-blood.png"; // set the image file path for pirateUp
-    ctx.drawImage(heroDead, hx , hy - 5,150, 325); // Image Height and Width for pirateUp
+    var heroDead = new Image(); //make image object for Knight
+    heroDead.src = "./Images/hero-blood.png"; // set the image file path for Knight
+    ctx.drawImage(heroDead, hx , hy - 5,150, 325); // Image Height and Width for Knight
   }
 
   function dungeon() {
-    var pirateDead = new Image(); //make image object for pirateUp
-    pirateDead.src = "./Images/cave-door.png"; // set the image file path for pirateUp
-    ctx.drawImage(pirateDead, 900, 150, 700, 400); // Image Height and Width for pirateUp
+    var pirateDead = new Image(); //make image object 
+    pirateDead.src = "./Images/cave-door.png"; // set the image file path 
+    ctx.drawImage(pirateDead, 900, 150, 700, 400); // Image Height and Width 
   }
 
   function goAway()
       {
-            var pirateDead = new Image(); //make image object for pirateUp
-            pirateDead.src = "./Images/go-away.png"; // set the image file path for pirateUp
-            ctx.drawImage(pirateDead, hx+95, hy+ 95, 200,70); // Image Height and Width for pirateUp
+            var pirateDead = new Image(); //make image object for Knight
+            pirateDead.src = "./Images/go-away.png"; // set the image file path for Knight
+            ctx.drawImage(pirateDead, hx+95, hy+ 95, 200,70); // Image Height and Width for Knight
       }
 
 
@@ -87,7 +86,7 @@ function init() {
       speed *= -1; // Reverse the direction of movement
     }else if (distance < 50) {
       // If bat is near the hero without heroStatus being "fire"
-      // Set heroStatus to false
+      
     heroStatus = false;
     }
   
