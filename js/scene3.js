@@ -74,26 +74,27 @@
 
 
 
-      function firePit() {
-        var firePitImg = new Image(); //make image object for pirateUp
-        firePitImg.src = "./Images/fire pit.png"; // set the image file path for pirateUp
-        ctx.drawImage(firePitImg, 350, 450, 550, 150); // Image Height and Width for pirateUp
-      }
+      
 
 
 
       function enemy() {
         var enemyImg = new Image(); //make image object for pirateUp
-        enemyImg.src = "./Images/enemy.jpg"; // set the image file path for pirateUp
-        ctx.drawImage(enemyImg, 200, 20, 40, 70); // Image Height and Width for pirateUp
+        enemyImg.src = "./Images/enemy.png"; // set the image file path for pirateUp
+        ctx.drawImage(enemyImg, 165, 5, 80, 140); // Image Height and Width for pirateUp
+      }
 
+      function bloodBalloon(){
+        var enemyImg = new Image(); //make image object for baloon got hit
+        enemyImg.src = "./Images/balloon-blood.png"; // set the image file path for baloon got hit
+        ctx.drawImage(enemyImg, bx, by, 200, 300); // Image Height and Width for baloon got hit
+      }
 
-    
-  }
-
-
-
-
+      function gotKilled(){
+        var enemyImg = new Image(); //make image object for got hit
+        enemyImg.src = "./Images/got-killed.png"; // set the image file path for got hit
+        ctx.drawImage(enemyImg, bx, by, 200, 300); // Image Height and Width for got hit
+      }
 
 
   var bulletX = 200;
@@ -103,14 +104,12 @@
   function bulltes(){
     // Draw the bullet
     ctx.beginPath();
-    ctx.arc(bulletX, bulletY, 5, 0, Math.PI * 2);
+    ctx.arc(bulletX, bulletY, 7, 0, Math.PI * 2);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
+    
   }
-
-
-
 
 
   function updateBulletPosition() {
@@ -122,25 +121,10 @@
       var normalizedDirectionX = directionX / magnitude;
       var normalizedDirectionY = directionY / magnitude;
 
-      var bulletSpeed = 5; // Adjust the speed as needed
+      var bulletSpeed = 4; // Adjust the speed as needed
 
       bulletX += normalizedDirectionX * bulletSpeed;
       bulletY += normalizedDirectionY * bulletSpeed;
-/*
-      // Check for collision with balloon
-      if (
-        bulletX >= bx &&
-        bulletX <= bx + 200 &&
-        bulletY >= by &&
-        bulletY <= by + 300
-      ) {
-        bulletHit = true;
-        // Stop the movement of the balloon
-        bSPEED = 0;
-        // Call heroDead() function
-        //heroDead();.
-        
-      }*/
     }
   }
 
@@ -152,7 +136,7 @@
     if (!bulletHit && Math.random() < 0.01) {
       // Adjust the probability (0.01) as needed
       bulletX = 200; // Fixed X position within the canvas
-      bulletY = 20; // Start the bullet from the top of the canvas
+      bulletY = 40; // Start the bullet from the top of the canvas
       bulletHit = false;
     }
   }
@@ -206,9 +190,7 @@
             hx += SPEED;
           }
         }
-
-
-        
+     
       }
       /* ===================================================| / Hero moving controls |=================================================== */
 
@@ -264,7 +246,8 @@
     // Stop the movement of the balloon
     bSPEED = 0;
     // Call heroDead() function
-    heroDead();
+    bloodBalloon();
+    gotKilled();
   }
 
       
@@ -274,12 +257,6 @@
 
 
     /* ===================================================| / Balloon moving controls |=================================================== */
-
-
-
-
-
-
       function clear() {
         ctx.drawImage(backgroundimage, 0, 0, cnv.width, cnv.height); // Image Height and Width
       
@@ -300,7 +277,6 @@
       function draw() {
         gasBallon();
         dungeon();
-        firePit();
       
         if (!bulletHit) {
           bulltes(); // Call the function to draw the bullet
@@ -314,12 +290,7 @@
             heroOnGasBallon();
           }
         }
-      
-      
-      
-      
-
-
+   
 
       function Loop() {
         clear();
@@ -335,10 +306,7 @@
         if (!heroStatus) {
           updateBulletPosition();
         }
-        
 
-
-        
 
         setTimeout(Loop, 20); //call loop every 20 milliseconds
       } //end loop

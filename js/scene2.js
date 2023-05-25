@@ -14,7 +14,7 @@ function init() {
 
   // Coordinates and speed of Hero (Player)
   var hx = 10; // Hero X coordinate
-  var hy = 150; // Hero Y coordinate
+  var hy = 230; // Hero Y coordinate
   var SPEED = 5;
 
   // Coordinates of Bat (Monster)
@@ -28,27 +28,27 @@ function init() {
   function bat() {
     var batFly = new Image(); //make image object for Bat
     batFly.src = "./Images/bat.png"; // set the image file path for Bat
-    ctx.drawImage(batFly, cx, cy, 250, 200); // Image Height and Width for Bat
+    ctx.drawImage(batFly, cx, cy, 200, 100); // Image Height and Width for Bat
   }
 
 
   function heroUp() {
     var heroUp = new Image(); //make image object for pirateUp
     heroUp.src = "./Images/hero-sword.png"; // set the image file path for pirateUp
-    ctx.drawImage(heroUp, hx, hy, 200, 400); // Image Height and Width for pirateUp
+    ctx.drawImage(heroUp, hx, hy, 150, 325); // Image Height and Width for pirateUp
   }
 
 
   function heroFire() {
     var heroFire = new Image(); //make image object for pirateUp
     heroFire.src = "./Images/hero-torch.png"; // set the image file path for pirateUp
-    ctx.drawImage(heroFire, hx, hy, 200, 400); // Image Height and Width for pirateUp
+    ctx.drawImage(heroFire, hx, hy, 150, 325); // Image Height and Width for pirateUp
   }
 
   function heroDead() {
     var heroDead = new Image(); //make image object for pirateUp
     heroDead.src = "./Images/hero-blood.png"; // set the image file path for pirateUp
-    ctx.drawImage(heroDead, hx , hy - 5,200, 400); // Image Height and Width for pirateUp
+    ctx.drawImage(heroDead, hx , hy - 5,150, 325); // Image Height and Width for pirateUp
   }
 
   function dungeon() {
@@ -57,6 +57,12 @@ function init() {
     ctx.drawImage(pirateDead, 900, 150, 700, 400); // Image Height and Width for pirateUp
   }
 
+  function goAway()
+      {
+            var pirateDead = new Image(); //make image object for pirateUp
+            pirateDead.src = "./Images/go-away.png"; // set the image file path for pirateUp
+            ctx.drawImage(pirateDead, hx+95, hy+ 95, 200,70); // Image Height and Width for pirateUp
+      }
 
 
 
@@ -70,7 +76,7 @@ function init() {
     var dy = hy - cy; // Calculate the difference in Y positions
     var distance = Math.sqrt(dx * dx + dy * dy); // Calculate the distance between the bat and the hero
   
-    var angle = Math.atan2(dy, dx);
+    var angle = Math.atan2(dy + 50, dx + 5);
   
     // Calculate the movement speed of the bat
     var speed = 2;
@@ -79,7 +85,7 @@ function init() {
       // If heroStatus is "fire" and bat is near the hero
       // Move the bat away from the hero
       speed *= -1; // Reverse the direction of movement
-    }else if (distance < 100) {
+    }else if (distance < 50) {
       // If bat is near the hero without heroStatus being "fire"
       // Set heroStatus to false
     heroStatus = false;
@@ -189,6 +195,7 @@ function init() {
       heroDead();
     } else if (heroStatus == "fire") {
       heroFire();
+      goAway();
     }
 
     bat();

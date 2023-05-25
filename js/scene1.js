@@ -70,30 +70,30 @@
 
       function heroUp()
       {
-            var heroUp = new Image(); //make image object for HeroUp
-            heroUp.src = "./Images/hero-scene1.png"; // set the image file path for HeroUp
-            ctx.drawImage(heroUp, hx, hy, 100,200); // Image Height and Width for HeroUp
+            var heroUp = new Image(); //make image object for pirateUp
+            heroUp.src = "./Images/hero-scene1.png"; // set the image file path for pirateUp
+            ctx.drawImage(heroUp, hx, hy, 100,200); // Image Height and Width for pirateUp
       }
            
       function heroDead()
       {
-            var heroDead = new Image(); //make image object for 
-            heroDead.src = "./Images/hero-dead-scene1.png"; // set the image file path
-            ctx.drawImage(heroDead, hx-47, hy-5, 170,220); // Image Height and Width 
+            var heroDead = new Image(); //make image object for pirateUp
+            heroDead.src = "./Images/hero-dead-scene1.png"; // set the image file path for pirateUp
+            ctx.drawImage(heroDead, hx-47, hy-5, 170,220); // Image Height and Width for pirateUp
       }
 
       function cantSee()
       {
-            var pirateDead = new Image(); //make image object 
-            pirateDead.src = "./Images/cant-see.png"; // set the image file path 
-            ctx.drawImage(pirateDead, hx+100, hy, 200,70); // Image Height and Width 
+            var pirateDead = new Image(); //make image object for pirateUp
+            pirateDead.src = "./Images/cant-see.png"; // set the image file path for pirateUp
+            ctx.drawImage(pirateDead, hx+100, hy, 200,70); // Image Height and Width for pirateUp
       }
 
       function dungeon()
       {
-            var pirateDead = new Image(); //make image object 
-            pirateDead.src = "./Images/dungeon.png"; // set the image file path 
-            ctx.drawImage(pirateDead, 900, 270, 500,300); // Image Height and Width 
+            var pirateDead = new Image(); //make image object for pirateUp
+            pirateDead.src = "./Images/dungeon.png"; // set the image file path for pirateUp
+            ctx.drawImage(pirateDead, 900, 270, 500,300); // Image Height and Width for pirateUp
       }
 
       function shootHero()
