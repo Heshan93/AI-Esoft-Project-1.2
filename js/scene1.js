@@ -6,9 +6,8 @@
     
       var cnv = document.getElementById("scene1"); 
       var ctx = cnv.getContext("2d"); 
-      ctx.fillStyle = "white";   // set background to white
-      //ctx.rect(0,0,1200,749);
-      //ctx.fill();
+     
+      
 
       //////////Loading Image Object & image draw function  for 1st seen//////////////////
 
@@ -37,7 +36,7 @@
       // initialize visibility duration count
       var count = 0;
 
-      hourcount = 0;
+      
 
 
       function CyclopSleep()
@@ -56,45 +55,49 @@
 
       function CyclopCommand()
       {
-            var CyclopImgCommand = new Image(); //make image object for Cyclop left
-            CyclopImgCommand.src = "./Images/monster-stop.png"; // set the image file path for Cyclop left
-            ctx.drawImage(CyclopImgCommand, cx, cy, 400,208); // Image Height and Width for Cyclop left 
+            var CyclopImgCommand = new Image(); //make image object
+            CyclopImgCommand.src = "./Images/monster-stop.png"; // set the image file 
+            ctx.drawImage(CyclopImgCommand, cx, cy, 400,208); // Image Height and Width 
       }
 
       function rock()
       {
-            var rockImage = new Image(); //make image object for Cyclop left
-            rockImage.src = "./Images/rock.png"; // set the image file path for Cyclop left
-            ctx.drawImage(rockImage, rx, ry, 250, 200); // Image Height and Width for Cyclop left 
+            var rockImage = new Image(); //make image object
+            rockImage.src = "./Images/rock.png"; // set the image file path 
+            ctx.drawImage(rockImage, rx, ry, 250, 200); // Image Height and Width 
       }
 
       function heroUp()
       {
-            var heroUp = new Image(); //make image object for pirateUp
-            heroUp.src = "./Images/hero-scene1.png"; // set the image file path for pirateUp
-            ctx.drawImage(heroUp, hx, hy, 100,200); // Image Height and Width for pirateUp
+            var heroUp = new Image(); //make image object 
+            heroUp.src = "./Images/hero-scene1.png"; // set the image file 
+            ctx.drawImage(heroUp, hx, hy, 100,200); // Image Height and Width 
       }
            
       function heroDead()
       {
-            var heroDead = new Image(); //make image object for pirateUp
-            heroDead.src = "./Images/hero-dead-scene1.png"; // set the image file path for pirateUp
-            ctx.drawImage(heroDead, hx-47, hy-5, 170,220); // Image Height and Width for pirateUp
+            var heroDead = new Image(); //make image object
+            heroDead.src = "./Images/hero-dead-scene1.png"; // set the image file path 
+            ctx.drawImage(heroDead, hx-47, hy-5, 170,220); // Image Height and Width
       }
 
       function cantSee()
       {
-            var pirateDead = new Image(); //make image object for pirateUp
-            pirateDead.src = "./Images/cant-see.png"; // set the image file path for pirateUp
-            ctx.drawImage(pirateDead, hx+100, hy, 200,70); // Image Height and Width for pirateUp
+            var pirateDead = new Image(); //make image object 
+            pirateDead.src = "./Images/cant-see.png"; // set the image file path 
+            ctx.drawImage(pirateDead, hx+100, hy, 200,70); // Image Height and Width 
       }
 
       function dungeon()
       {
-            var pirateDead = new Image(); //make image object for pirateUp
-            pirateDead.src = "./Images/dungeon.png"; // set the image file path for pirateUp
-            ctx.drawImage(pirateDead, 900, 270, 500,300); // Image Height and Width for pirateUp
+            var pirateDead = new Image(); //make image object
+            pirateDead.src = "./Images/dungeon.png"; // set the image file path 
+            ctx.drawImage(pirateDead, 900, 270, 500,300); // Image Height and Width
+            
       }
+
+
+
 
       function shootHero()
       {
@@ -196,7 +199,7 @@
   function clear()
   {
     ctx.drawImage(backgroundimage, 0, 0, cnv.width, cnv.height); // Image Height and Width
-    //ctx.drawImage(shootRemove, 0, 0, cnv.width, cnv.height); // Image Height and Width
+   
     
   }
 
