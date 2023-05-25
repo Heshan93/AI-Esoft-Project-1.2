@@ -3,9 +3,7 @@
     function init() {
       var cnv = document.getElementById("scene3");
       var ctx = cnv.getContext("2d");
-      ctx.fillStyle = "white"; // set background to white
-      ctx.rect(0, 400, 1200, 749);
-      //ctx.fill();
+;
 
       //////////Loading Image Object & image draw function  for 2st seen//////////////////
 
@@ -31,17 +29,18 @@
 
 
       function heroUp() {
-        var heroUp = new Image(); //make image object for pirateUp
-        heroUp.src = "./Images/hero-sword.png"; // set the image file path for pirateUp
-        ctx.drawImage(heroUp, hx, hy, 90, 190); // Image Height and Width for pirateUp
+        var heroUp = new Image(); //make image object 
+        heroUp.src = "./Images/hero-sword.png"; // set the image file path
+        ctx.drawImage(heroUp, hx, hy, 90, 190); // Image Height and Width 
       }
 
       
       function heroOnGasBallon() {
-        var heroOnGasBallonImg = new Image(); //make image object for pirateUp
-        heroOnGasBallonImg.src = "./Images/balloon-hero.png"; // set the image file path for pirateUp
-        ctx.drawImage(heroOnGasBallonImg, bx, by, 200, 300); // Image Height and Width for pirateUp
+        var heroOnGasBallonImg = new Image(); //make image object
+        heroOnGasBallonImg.src = "./Images/balloon-hero.png"; // set the image file path 
+        ctx.drawImage(heroOnGasBallonImg, bx, by, 200, 300); // Image Height and Width 
       }
+
 
       function gasBallon() {
         if (hx === 200) {
@@ -55,21 +54,10 @@
 
 
 
-
-
-      function heroDead() {
-        
-        var heroDead = new Image(); //make image object for pirateUp
-        heroDead.src = "./Images/hero-dead-scene1.png"; // set the image file path for pirateUp
-        ctx.drawImage(heroDead, bx, by , 200, 300); // Image Height and Width for pirateUp
-      }
-
-
-
       function dungeon() {
-        var pirateDead = new Image(); //make image object for pirateUp
-        pirateDead.src = "./Images/cave-door-out.png"; // set the image file path for pirateUp
-        ctx.drawImage(pirateDead, 0, 225, 230, 300); // Image Height and Width for pirateUp
+        var pirateDead = new Image(); //make image object 
+        pirateDead.src = "./Images/cave-door-out.png"; // set the image file 
+        ctx.drawImage(pirateDead, 0, 225, 230, 300); // Image Height and Width 
       }
 
 
@@ -79,15 +67,15 @@
 
 
       function enemy() {
-        var enemyImg = new Image(); //make image object for pirateUp
-        enemyImg.src = "./Images/enemy.png"; // set the image file path for pirateUp
-        ctx.drawImage(enemyImg, 165, 5, 80, 140); // Image Height and Width for pirateUp
+        var enemyImg = new Image(); //make image object 
+        enemyImg.src = "./Images/enemy.png"; // set the image file path
+        ctx.drawImage(enemyImg, 165, 5, 80, 140); // Image Height and Width f
       }
 
       function bloodBalloon(){
-        var enemyImg = new Image(); //make image object for baloon got hit
-        enemyImg.src = "./Images/balloon-blood.png"; // set the image file path for baloon got hit
-        ctx.drawImage(enemyImg, bx, by, 200, 300); // Image Height and Width for baloon got hit
+        var enemyImg = new Image(); //make image object 
+        enemyImg.src = "./Images/balloon-blood.png"; // set the image file path 
+        ctx.drawImage(enemyImg, bx, by, 200, 300); // Image Height and Width 
       }
 
       function gotKilled(){
