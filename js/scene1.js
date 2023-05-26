@@ -98,17 +98,14 @@
 
 
 
-
-      function shootHero()
-      {
-          ctx.lineWidth = 5;
-          ctx.strokeStyle = 'red';
-          ctx.moveTo(505,210);
-          ctx.lineTo(hx+35,hy+100);
-          ctx.stroke();
-         
-      }
-
+// Function to draw a line representing the hero shooting towards a target
+function shootHero() {
+  ctx.lineWidth = 5; // Set the width of the line
+  ctx.strokeStyle = 'red'; // Set the color of the line to red
+  ctx.moveTo(505, 210); // Set the starting point of the line
+  ctx.lineTo(hx + 35, hy + 100); // Draw a line to the target coordinates
+  ctx.stroke(); // Actually draw the line
+}
     
 
 
@@ -126,19 +123,18 @@
   
 
   /* ===================================================| Handle Keyboard controls |=================================================== */
+// Handle keyboard controls
+var keyPress = {}; // Object to store the state of key presses
 
-  var keyPress = {} ;   // initialize the  key presses
-  addEventListener("keydown",  function (e) 
-  {
-    keyPress[e.keyCode] = true; // If press True
-   
-  }, false);
+// Event listener for keydown event
+addEventListener("keydown", function (e) {
+    keyPress[e.keyCode] = true; // Set the property of the pressed key to true
+}, false);
 
-  addEventListener("keyup",   function (e)  
-  {
-    delete keyPress[e.keyCode];
-    
-  }, false);
+// Event listener for keyup event
+addEventListener("keyup", function (e) {
+    delete keyPress[e.keyCode]; // Delete the property of the released key
+}, false);
 
 
 
@@ -151,7 +147,7 @@
       return;  // Stop moving if the hero is dead 
     }
 
-      checkVisibility();
+      checkVisibility(); // every time hero move it will check the if he is visible 
 
 
       if (37 in keyPress) { // left arrow
@@ -167,23 +163,29 @@
       }
 
 
+// Handle hero visibility and trigger actions based on visibility duration
+if (EnemyCanSee == true && cyclopStatus == true) {
+  // The enemy can see the hero and the cyclop is awake
+  count = count + 1; // Increment the visibility duration count
+} else {
+  // The enemy cannot see the hero or the cyclop is sleeping
+  count = 0; // Reset the visibility duration count
+}
 
-      if (EnemyCanSee == true && cyclopStatus == true){
-        //enemyCOLOR = "red";
-        count = count + 1; 
-      } else {
-        count = 0;
-      }
+if (count > 40) {
+  // The player has been visible to the enemy for 40 increments (3 seconds)
+  CyclopCommand(); // Give a command or stop actions
+  // shootHero();
+}
 
-      if (count > 40) {  //player was visible for 3 seconds
-        CyclopCommand();
-        //shootHero(); 
-      }
-      if (count > 80) {  //player was visible for 3 seconds
-       
-        shootHero(); 
-        heroStatus = false;
-      }
+if (count > 80) {
+  // The player has been visible to the enemy for 80 increments (6 seconds)
+  shootHero(); // Shoot the hero
+  heroStatus = false; // Set the hero status to false (likely dead)
+}
+
+
+
 
       if(hx>1090){ // Loads the seen 2 
         window.open("./index2.html", "_self");
@@ -202,16 +204,15 @@
   }
 
 
+// Update the cyclop status of Sleep & wake every 3 seconds
+setInterval(function() {
+  if (Math.random() < 0.5) {
+    cyclopStatus = true; // Set cyclop status to true (awake/active) with a 50% chance
+  } else {
+    cyclopStatus = false; // Set cyclop status to false (sleeping/inactive) with a 50% chance
+  }
+}, 3000); //3 seconds
 
-      // Call set cyclopStatus  every 3 seconds
-      setInterval(function() {
-        if (Math.random() < 0.5) {
-          cyclopStatus = true;
-        } else {
-          cyclopStatus = false;
-        }
-      }, 3000);
-    
 
   function draw()
   {
