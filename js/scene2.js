@@ -73,7 +73,7 @@ function init() {
     var dy = hy - cy; // Calculate the difference in Y positions between the hero and the bat
     var distance = Math.sqrt(dx * dx + dy * dy); // Calculate the distance between the bat and the hero using the Pythagorean theorem
   
-    var angle = Math. (dy + 50, dx + 5); // Calculate the angle between the bat and the hero using Math.atan2()
+    var angle = Math.atan2(dy + 50, dx + 5); // Calculate the angle between the bat and the hero using Math.atan2()
   
     var speed = 2; // Set the movement speed of the bat
   
