@@ -42,15 +42,17 @@
       }
 
 
-      function gasBallon() {
-        if (hx === 200) {
-          heroOnGasBallon();
-        } else {
-          var gasBallonImg = new Image();
-          gasBallonImg.src = "./Images/balloon-empty.png";
-          ctx.drawImage(gasBallonImg, bx, by, 200, 300);
-        }
-      }
+
+      // Function to draw the balloon image based on the hero's position
+function gasBallon() {
+  if (hx === 200) {
+    heroOnGasBallon(); // Draw the hero on the balloon
+  } else {
+    var gasBallonImg = new Image();
+    gasBallonImg.src = "./Images/balloon-empty.png"; // Set the image source to an empty balloon image
+    ctx.drawImage(gasBallonImg, bx, by, 200, 300); // Draw the empty balloon image on the canvas
+  }
+}
 
 
 
@@ -84,37 +86,41 @@
         ctx.drawImage(enemyImg, bx, by, 200, 300); // Image Height and Width for got hit
       }
 
+      var bulletX = 200;
+      var bulletY = 20;
+      var bulletHit = false;
+      
+      function bullets() {
+        // Function to draw a bullet on the canvas
+        // This function is called to draw the bullet in the game scene
+      
+        // Draw the bullet
+        ctx.beginPath();
+        ctx.arc(bulletX, bulletY, 7, 0, Math.PI * 2);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+      }
+      
 
-  var bulletX = 200;
-  var bulletY = 20;
-  var bulletHit = false;
-
-  function bulltes(){
-    // Draw the bullet
-    ctx.beginPath();
-    ctx.arc(bulletX, bulletY, 7, 0, Math.PI * 2);
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.closePath();
-    
-  }
-
-
-  function updateBulletPosition() {
-    if (!bulletHit) {
-      var directionX = bx - 0; // Calculate the direction towards the balloon's X position
-      var directionY = by - 1; // Calculate the direction towards the balloon's Y position
-
-      var magnitude = Math.sqrt(directionX * directionX + directionY * directionY);
-      var normalizedDirectionX = directionX / magnitude;
-      var normalizedDirectionY = directionY / magnitude;
-
-      var bulletSpeed = 4; 
-
-      bulletX += normalizedDirectionX * bulletSpeed;
-      bulletY += normalizedDirectionY * bulletSpeed;
-    }
-  }
+      function updateBulletPosition() {
+        if (!bulletHit) {
+          var directionX = bx;
+          var directionY = by ;
+      
+          var magnitude = Math.sqrt(directionX * directionX + directionY * directionY); // Calculate the magnitude of the direction vector
+      
+          var normalizedDirectionX = directionX / magnitude; // Normalize the horizontal direction component
+          var normalizedDirectionY = directionY / magnitude; // Normalize the vertical direction component
+      
+          var bulletSpeed = 4; // Set the speed at which the bullet moves
+      
+          // Update the bullet's position based on the normalized direction and speed
+          bulletX += normalizedDirectionX * bulletSpeed;
+          bulletY += normalizedDirectionY * bulletSpeed;
+        }
+      }
+      
 
 
 
@@ -222,21 +228,21 @@
         if(bx>1050){ // Loads the seen 4 
           window.open("./index4.html", "_self");
         }
-
-        // Check for collision with bullet
-  if (
-    bulletX >= bx &&
-    bulletX <= bx + 200 &&
-    bulletY >= by &&
-    bulletY <= by + 300
-  ) {
-    bulletHit = true;
-    // Stop the movement of the balloon
-    bSPEED = 0;
-    // Call heroDead() function
-    bloodBalloon();
-    gotKilled();
-  }
+// Check for collision with bullet
+if (
+  bulletX >= bx &&
+  bulletX <= bx + 200 &&
+  bulletY >= by &&
+  bulletY <= by + 300
+) {
+  bulletHit = true;
+  // Stop the movement of the balloon
+  bSPEED = 0;
+  // Show the balloon with blood
+  bloodBalloon();
+  // Show the hero got killed
+  gotKilled();
+}
 
       
       }
@@ -259,7 +265,7 @@
         dungeon();
       
         if (!bulletHit) {
-          bulltes(); // Call the function to draw the bullet
+          bullets(); // Call the function to draw the bullet
         }
       
         enemy();

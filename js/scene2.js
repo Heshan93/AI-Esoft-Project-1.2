@@ -16,6 +16,7 @@ function init() {
   var hy = 230; // Hero Y coordinate
   var SPEED = 5;
 
+
   // Coordinates of Bat (Monster)
   var cx = 850; // Bat X coordinate
   var cy = 0; // Bat y coordinate
@@ -67,30 +68,25 @@ function init() {
 
    /* ===================================================| Bat Movement controls |=================================================== */
 
-
-  function batmove() {
-
-    
-    var dx = hx - cx; // Calculate the difference in X positions
-    var dy = hy - cy; // Calculate the difference in Y positions
-    var distance = Math.sqrt(dx * dx + dy * dy); // Calculate the distance between the bat and the hero
+   function batmove() {
+    var dx = hx - cx; // Calculate the difference in X positions between the hero and the bat
+    var dy = hy - cy; // Calculate the difference in Y positions between the hero and the bat
+    var distance = Math.sqrt(dx * dx + dy * dy); // Calculate the distance between the bat and the hero using the Pythagorean theorem
   
-    var angle = Math.atan2(dy + 50, dx + 5);
+    var angle = Math. (dy + 50, dx + 5); // Calculate the angle between the bat and the hero using Math.atan2()
   
-    // Calculate the movement speed of the bat
-    var speed = 2;
+    var speed = 2; // Set the movement speed of the bat
   
     if (heroStatus == "fire" && distance < 500) {
-      // If heroStatus is "fire" and bat is near the hero
+      // If heroStatus is "fire" and the bat is near the hero
       // Move the bat away from the hero
       speed *= -1; // Reverse the direction of movement
-    }else if (distance < 50) {
-      // If bat is near the hero without heroStatus being "fire"
-      
-    heroStatus = false;
+    } else if (distance < 50) {
+      // If the bat is near the hero without heroStatus being "fire"
+      heroStatus = false; // Set heroStatus to false, indicating that the hero is dead
     }
   
-    // Calculate the movement in X and Y directions
+    // Calculate the movement in the X and Y directions
     var moveX = speed * Math.cos(angle);
     var moveY = speed * Math.sin(angle);
   
@@ -98,8 +94,7 @@ function init() {
     cx += moveX;
     cy += moveY;
   }
-
-
+  
 
 
   /* ===================================================| Handle Keyboard controls |=================================================== */
