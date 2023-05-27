@@ -148,7 +148,7 @@ function init() {
   function clear() {
     ctx.drawImage(backgroundimage, 0, 0, cnv.width, cnv.height); // Image Height and Width
   }
-
+/*
   // Call set BatStatus  every 3 seconds
   setInterval(function () {
     if (Math.random() < 0.5) {
@@ -158,6 +158,7 @@ function init() {
     }
   }, 3000);
 
+*/
   function draw() {
     dungeon();
 
